@@ -20,5 +20,11 @@
   <%= @user.password_digest %>
 </p>
 
+<% if @user.link %>
+    <div class="col s6">
+      <td><%= image_tag @user.link, id:"profile"%></td>
+    </div>
+  <% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
