@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item description:</strong>
+  <%= @order.item_description %>
+</p>
+
+<p>
+  <strong>Item weight:</strong>
+  <%= @order.item_weight %>
+</p>
+
+<p>
+  <strong>Item height:</strong>
+  <%= @order.item_height %>
+</p>
+
+<p>
+  <strong>Item depth:</strong>
+  <%= @order.item_depth %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @order.sender_id %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @order.receiver_id %>
+</p>
+
+<p>
+  <strong>Courier:</strong>
+  <%= @order.courier_id %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @order.state %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
