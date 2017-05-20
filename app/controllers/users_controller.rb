@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.new ( user_strict_params )
       if @user.save
         session[:user_id] = @user.id
-        cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
+        cloudinary = Cloudinary::Uploader.upload( params["user"]["image"])
         @user.link = cloudinary["url"]
         @user.save
         redirect_to user_path( @user )
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
       user = User.find_by(id: params["id"])
       user.update( user_strict_params )
-      cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
+      cloudinary = Cloudinary::Uploader.upload( params["user"]["image"])
       user.link = cloudinary["url"]
       user.save
       redirect_to user_path(user)
