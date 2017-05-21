@@ -31,16 +31,3 @@ order_6 = Order.create(item_description: "12 bananas", item_weight: 15, item_hei
 # 3 - Picked up/on journey
 # 4 - Delivered (Courier has marked as delivered)
 # 5 - Confirmed delivery (Courier and Sender mark as delivered)
-
-
-
-
-create_table "users", force: :cascade do |t|
-  t.string   "first_name"
-  t.string   "last_name"
-  t.string   "email"
-  t.string   "password_digest"
-  t.datetime "created_at",      null: false
-  t.datetime "updated_at",      null: false
-  t.text     "link"
-end
