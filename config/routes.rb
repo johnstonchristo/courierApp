@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/logout' => 'session#destroy'
 
   get '/orders/pending_orders' => 'orders#show_pending_orders'
+  get '/orders/:id/accept_pending_order' => 'orders#accept_pending_order'
+
 
   root "users#index"
 

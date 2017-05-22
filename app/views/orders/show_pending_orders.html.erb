@@ -7,8 +7,11 @@
   <div class="row">
     <li>
       <%= order.item_description  %>
-      <a class="waves-effect waves-light btn red right" href="/">Decline</a>
-      <a class="waves-effect waves-light btn light-blue lighten-2 right" href="/">Accept</a>
+
+      <%= link_to("Decline", "/orders/#{order.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red right") %>
+
+      <%= link_to("Accept", "/orders/#{order.id}/accept_pending_order",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+
     </li>
   </div>
   <% end %>
