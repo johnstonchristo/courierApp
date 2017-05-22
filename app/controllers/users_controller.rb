@@ -51,8 +51,10 @@ class UsersController < ApplicationController
   def update
       user = User.find_by(id: params["id"])
       user.update( user_strict_params )
-      cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
-      user.link = cloudinary["url"]
+      if params[:user][:link]
+          cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
+          @user.link = cloudinary["url"]
+        end
       user.save
       redirect_to user_path(user)
     end
@@ -69,9 +71,9 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find_by(id: params[:id])
     end
-    
+
     def user_strict_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :link)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :link, :username)
     end
 
     def check_if_logged_out
