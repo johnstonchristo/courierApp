@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.state = params[:order][:state].to_i
+    @order.sender = @current_user
 
     respond_to do |format|
       if @order.save
