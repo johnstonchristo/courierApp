@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = User.new ( user_strict_params )
+    @user = User.new( user_strict_params )
       if @user.save
         session[:user_id] = @user.id
         if params[:user][:link]
@@ -49,15 +49,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-      user = User.find_by(id: params["id"])
-      user.update( user_strict_params )
-      if params[:user][:link]
-          cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
-          @user.link = cloudinary["url"]
-        end
-      user.save
-      redirect_to user_path(user)
+    user = User.find_by(id: params["id"])
+    user.update( user_strict_params )
+    if params[:user][:link]
+      cloudinary = Cloudinary::Uploader.upload( params["user"]["link"])
+      user.link = cloudinary["url"]
     end
+    user.save
+    redirect_to user_path(user)
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     end
 
     def user_strict_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :link, :username)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :username)
     end
 
     def check_if_logged_out
