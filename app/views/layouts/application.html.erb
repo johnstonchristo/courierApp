@@ -9,6 +9,20 @@
   </head>
 
   <body>
+
+      <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if @current_user %>
+          <li><%= link_to "My Profile", user_path(@current_user) %></li>
+          <% end %>
+          <li><a href="/orders">Orders</a></li>
+          <li><a href="/users">Users</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container">
       <%= yield %>
     </div>
