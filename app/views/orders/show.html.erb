@@ -22,17 +22,22 @@
 
 <p>
   <strong>Sender:</strong>
-  <%= @order.sender_id %>
+    <%= @order.sender.username %>
+
 </p>
 
 <p>
   <strong>Receiver:</strong>
-  <%= @order.receiver_id %>
+  <% if @order.receiver_id  %>
+    <%= @order.receiver.username %>
+  <% end  %>
 </p>
 
 <p>
   <strong>Courier:</strong>
-  <%= @order.courier_id %>
+  <% if @order.courier_id  %>
+    <%= @order.courier.username %>
+  <% end  %>
 </p>
 
 <p>

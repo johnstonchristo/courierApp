@@ -5,14 +5,16 @@ user_1 = User.create({
   last_name: "Johnston",
   email: "johnstonchristo@gmail.com",
   password: "chicken",
-  password_confirmation: "chicken"
+  password_confirmation: "chicken",
+  username: "johnstonchristo"
   })
 
 user_2 = User.create({
   first_name: "James",
   last_name: "Nugent", email: "jnugent1311@gmail.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  username: "nugget"
   })
 
 user_3 = User.create({
@@ -20,7 +22,8 @@ user_3 = User.create({
   last_name: "Rule",
   email: "johnstonchristo@gmail.com",
   password: "fyre",
-  password_confirmation: "fyre"
+  password_confirmation: "fyre",
+  username: "monicaaaa"
   })
 
 puts "User Count: #{User.all.count}"
@@ -34,7 +37,7 @@ order_1 = Order.create({
   item_height: 10,
   item_depth: 15,
   sender_id: user_1.id,
-  state: 0
+  state: 0,
   })
 
 order_2 = Order.create(item_description: "Crack", item_weight: 3, item_height: 10, item_depth: 15, sender_id: user_1.id, receiver_id: user_2.id, state: 1)
