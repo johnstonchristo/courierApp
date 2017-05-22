@@ -89,6 +89,14 @@ class OrdersController < ApplicationController
     redirect_to "/orders/#{id}"
   end
 
+  def courier_on_journey
+    id = params['id']
+    order = Order.find_by(id: id)
+    order.state = 3
+    order.save
+    redirect_to "/orders/#{id}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

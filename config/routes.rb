@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'orders/potential_deliveries' => 'orders#show_potential_deliveries'
   get 'orders/:id/accept_potential_delivery' => 'orders#accept_potential_delivery'
 
+  get '/orders/:id/delivery_on_journey' => 'orders#courier_on_journey'
+
 
   root "users#index"
 
