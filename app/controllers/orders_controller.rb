@@ -67,13 +67,13 @@ class OrdersController < ApplicationController
   def show_pending_orders
     @orders = Order.where(receiver_id: @current_user.id, state: "created")
   end
-  
+
   def accept_pending_order
     id = params['id']
     order = Order.find_by(id: id)
     order.state = 1
     order.save
-    redirect_to "/orders"
+    redirect_to "/orders/#{id}"
   end
 
   private
