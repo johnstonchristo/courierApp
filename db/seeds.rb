@@ -50,12 +50,3 @@ order_5 = Order.create(item_description: "Nosé", item_weight: 5, item_height: 1
 order_6 = Order.create(item_description: "12 bananas", item_weight: 15, item_height: 8, item_depth: 15, sender_id: user_1.id, receiver_id: user_2.id, courier_id: user_3.id, state: 5)
 
 puts "Order Count #{Order.all.count}"
-
-
-
-# 0 - Created (sender_id has been assigned)
-# 1 - Receiver accepted (sender_id and receiver_id have been assigned)
-# 2 - Courier accepted (sender_id, receiver_id and courier_id have been assigned)
-# 3 - Picked up/on journey
-# 4 - Delivered (Courier has marked as delivered)
-# 5 - Confirmed delivery (Courier and Sender mark as delivered)
