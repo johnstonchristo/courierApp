@@ -1,0 +1,14 @@
+<h3>
+  Jobs Near ME!
+</h3>
+
+<ul>
+  <% @orders.each do |order| %>
+  <div class="row">
+    <li>
+      <%= order.item_description  %>
+      <%= link_to("Accept", "/orders/#{order.id}/accept_potential_delivery",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+    </li>
+  </div>
+  <% end %>
+</ul>

@@ -76,6 +76,19 @@ class OrdersController < ApplicationController
     redirect_to "/orders/#{id}"
   end
 
+  def show_potential_deliveries
+    @orders = Order.where(courier_id: nil, state: "receiver_accepted")
+  end
+
+  def accept_potential_delivery
+    id = params['id']
+    order = Order.find_by(id: id)
+    order.state = 2
+    order.courier_id = @current_user.id
+    order.save
+    redirect_to "/orders/#{id}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
