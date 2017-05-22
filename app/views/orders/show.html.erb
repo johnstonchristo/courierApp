@@ -45,5 +45,10 @@
   <%= @order.state %>
 </p>
 
+<% if (@order.state == "on_journey") %>
+  <%= render 'journey', order: @order %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
