@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20170520032657) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.integer  "courier_id"
-    t.integer  "state"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "state",            default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|
