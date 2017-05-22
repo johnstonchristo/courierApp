@@ -16,6 +16,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if @current_user %>
           <li><%= link_to "My Profile", user_path(@current_user) %></li>
+          <li><a href="/orders/pending_orders">My Pending Orders</a></li>
           <li><a href="/logout">Logout</a></li>
           <% end %>
           <li><a href="/orders">Orders</a></li>
