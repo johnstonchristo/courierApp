@@ -1,1 +1,11 @@
-<h1>Show all pending orders for a single user</h1>
+<h3>
+  My Pending Orders:
+</h3>
+
+<ul>
+  <% @orders.each do |order| %>
+    <li>
+      <%= order.item_description  %>
+    </li>
+  <% end %>
+</ul>
