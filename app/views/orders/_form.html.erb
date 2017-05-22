@@ -3,7 +3,7 @@
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
+     <ul>
       <% order.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -11,47 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :item_description %>
     <%= f.text_field :item_description %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :item_weight %>
     <%= f.number_field :item_weight %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :item_height %>
     <%= f.number_field :item_height %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :item_depth %>
     <%= f.number_field :item_depth %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :sender_id %>
     <%= f.number_field :sender_id %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :receiver_id %>
-    <%= f.number_field :receiver_id %>
+    <%= f.collection_select :receiver_id, User.order(:first_name),:id, :first_name, include_blank: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :courier_id %>
-    <%= f.number_field :courier_id %>
-  </div>
-
-  <div class="field">
+ <div class="field">
     <%= f.label :state %>
     <%= f.number_field :state %>
   </div>
 
-  <div class="actions">
+ <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
