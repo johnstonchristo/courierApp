@@ -21,10 +21,7 @@ ActiveRecord::Schema.define(version: 20170523010912) do
     t.text     "address"
     t.text     "latitude"
     t.text     "longitude"
-<<<<<<< HEAD
     t.integer  "order_id"
-=======
->>>>>>> 5140240be984f7bb7f2f09cc813fd093f68d02c2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
