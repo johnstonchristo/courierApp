@@ -74,7 +74,6 @@ class OrdersController < ApplicationController
     order.state = 1
     order.save
     redirect_to "/orders/#{id}"
-    # xxx
   end
 
   def show_potential_deliveries
