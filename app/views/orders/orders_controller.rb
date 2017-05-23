@@ -74,7 +74,6 @@ class OrdersController < ApplicationController
     order.state = 1
     order.save
     redirect_to "/orders/#{id}"
-    # xxx
   end
 
   def show_potential_deliveries
@@ -125,3 +124,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:item_description, :item_weight, :item_height, :item_depth, :sender_id, :receiver_id, :courier_id)
     end
 end
+
