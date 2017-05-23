@@ -74,7 +74,6 @@ class OrdersController < ApplicationController
     order.state = 1
     order.save
     redirect_to "/orders/#{id}"
-    # xxx
   end
 
   def show_potential_deliveries
@@ -98,6 +97,22 @@ class OrdersController < ApplicationController
     redirect_to "/orders/#{id}"
   end
 
+  def courier_order_delivered
+    id = params['id']
+    order = Order.find_by(id: id)
+    order.state = 4
+    order.save
+    redirect_to "/orders/#{id}"
+  end
+
+  def receiver_confirmed_delivery
+    id = params['id']
+    order = Order.find_by(id: id)
+    order.state = 5
+    order.save
+    redirect_to "/orders/#{id}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -109,3 +124,4 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:item_description, :item_weight, :item_height, :item_depth, :sender_id, :receiver_id, :courier_id)
     end
 end
+
