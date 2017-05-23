@@ -1,0 +1,2 @@
+class ReceiverLocation < Location
+end

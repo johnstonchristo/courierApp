@@ -1,0 +1,2 @@
+class CourierLocation < Location
+end
