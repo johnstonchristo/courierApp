@@ -36,6 +36,17 @@
     <%= f.collection_select :receiver_id, User.order(:username),:id, :username, include_blank: true %>
   </div>
 
+
+   <div class="field">
+      <%= f.label :SenderLocation %>
+      <%= f.text_field :SenderLocation %>
+    </div>
+
+    <div class="field">
+       <%= f.label :ReceiverLocation %>
+       <%= f.text_field :ReceiverLocation %>
+     </div>
+
  <div class="actions">
     <%= f.submit %>
   </div>

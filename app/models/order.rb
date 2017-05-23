@@ -6,6 +6,8 @@ class Order < ApplicationRecord
 
   enum state: [ :created, :receiver_accepted, :courier_accepted, :on_journey, :delivered, :delivery_confirmed ]
 
+  has_many :locations
+
 end
 
 # 0 - Created (sender_id has been assigned)

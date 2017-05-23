@@ -28,6 +28,9 @@ class OrdersController < ApplicationController
     @order.state = params[:order][:state].to_i
     @order.sender = @current_user
 
+    # @order.locations << SenderLocation.create(...)
+    # @order.locations << ReceiverLocation.create(...)
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
