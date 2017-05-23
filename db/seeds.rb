@@ -59,6 +59,7 @@ order_1 = Order.create({
   item_height: 10,
   item_depth: 15,
   sender_id: user_1.id,
+  receiver_id: user_2.id,
   state: 0,
   })
 

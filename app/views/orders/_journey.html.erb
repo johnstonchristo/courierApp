@@ -1,13 +1,18 @@
 <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var receiver = {lat: <%= @order.receiver_location.latitude %>, lng: <%= @order.receiver_location.longitude %>};
+        var sender = {lat: <%= @order.sender_location.latitude %>, lng: <%= @order.sender_location.longitude %>};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
+          zoom: 11,
+          center: sender
         });
-        var marker = new google.maps.Marker({
-          position: uluru,
+        var receiverMarker = new google.maps.Marker({
+          position: receiver,
+          map: map
+        });
+        var senderMarker = new google.maps.Marker({
+          position: sender,
           map: map
         });
       }
