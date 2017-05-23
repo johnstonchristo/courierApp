@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :locations
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   get '/logout' => 'session#destroy'
