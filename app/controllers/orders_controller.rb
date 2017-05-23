@@ -28,12 +28,11 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.state = params[:order][:state].to_i
     @order.sender = @current_user
-    @order.locations << SenderLocation.create(address: params['sender_location'])
-    @order.locations << ReceiverLocation.create(address: params['receiver_location'])
+    @order.locations << SenderLocation.create(full_street_address: params['sender_location'])
+    @order.locations << ReceiverLocation.create(full_street_address: params['receiver_location'])
     respond_to do |format|
       if @order.save
-        raise 'hell'
-        
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
