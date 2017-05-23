@@ -227,22 +227,19 @@ puts "Order Count #{Order.all.count}"
 Location.destroy_all
 
 location_1 = SenderLocation.create(
-  latitude: "-33.8643878",
-  longitude: "151.2057341",
-  order_id: order_1.id
+full_street_address: "55 York Street Sydney Australia",
+order_id: order_1.id
 )
 
 location_2 = ReceiverLocation.create(
-  latitude: "-33.7932",
-  longitude: "151.2876",
-  order_id: order_1.id
+full_street_address: "1 August Road Manly Australia",
+order_id: order_1.id
 )
 
 
-location_3 = CourierLocation.create(
-  latitude: "-33.8526138",
-  longitude: "151.2082248",
-  order_id: order_1.id
-)
+# location_3 = CourierLocation.create(
+# address: "1 Smith Street"
+#   order_id: order_1.id
+# )
 
 puts "Location Count #{Location.all.count}"
