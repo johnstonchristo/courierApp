@@ -45,7 +45,7 @@
   <%= @order.state %>
 </p>
 
-<% if (@current_user.id == @order.courier_id && @order.state == 2) %>
+<% if (@current_user.id == @order.courier_id && @order.state == "courier_accepted") %>
 <hr>
   <p>Courier: <%= link_to("Picked Up!", "/orders/#{@order.id}/delivery_on_journey",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
 
@@ -55,9 +55,25 @@
 <hr>
 <% end %>
 
+
 <% if (@order.state == "on_journey") %>
   <%= render 'journey', order: @order %>
 <% end %>
+
+<% if (@current_user.id == @order.courier_id && @order.state == "on_journey") %>
+<hr>
+  <p>Courier: <%= link_to("Order Delivered!", "/orders/#{@order.id}/order_delivered",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+</li></p>
+<hr>
+<% end %>
+
+<% if (@current_user.id == @order.receiver_id && @order.state == "delivered") %>
+<hr>
+  <p>Receiver: <%= link_to("Confirm Order Received!", "/orders/#{@order.id}/order_received",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+</li></p>
+<hr>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
