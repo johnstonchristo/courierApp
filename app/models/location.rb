@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
   belongs_to :order, optional: true
-#   geocoded_by :address
-# after_validation :geocode
+  geocoded_by :full_street_address
+after_validation :geocode
 end

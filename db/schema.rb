@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20170523010912) do
   create_table "locations", force: :cascade do |t|
     t.string   "type"
     t.text     "name"
-    t.text     "address"
+    t.text     "full_street_address"
     t.text     "latitude"
     t.text     "longitude"
     t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "orders", force: :cascade do |t|
