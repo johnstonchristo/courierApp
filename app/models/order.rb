@@ -8,6 +8,14 @@ class Order < ApplicationRecord
 
   has_many :locations
 
+  def sender_location
+    self.locations.find_by(type: "SenderLocation")
+  end
+
+  def receiver_location
+    self.locations.find_by(type: "ReceiverLocation")
+  end
+
 end
 
 # 0 - Created (sender_id has been assigned)
