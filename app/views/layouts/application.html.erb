@@ -3,9 +3,12 @@
   <head>
     <title>CourierApp</title>
     <%= csrf_meta_tags %>
-
+    <script>
+      var App = App || {};
+      App.currentUser = <%= @current_user.to_json.html_safe %>;
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -29,6 +32,6 @@
     <div class="container">
       <%= yield %>
     </div>
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

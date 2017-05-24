@@ -144,6 +144,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    redis (3.3.3)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -211,6 +212,7 @@ DEPENDENCIES
   rails (~> 5.0.3)
   rails-assets-sweetalert2 (~> 5.1.1)!
   rails_12factor
+  redis
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
