@@ -14,7 +14,8 @@ class OrdersController < ApplicationController
     order = Order.find_by(id: id)
     if (order.state == "on_journey")
       ActionCable.server.broadcast "order_channel_#{id}",
-          location: order.sender_location
+          location: order.sender_location,
+          order: order
     end
   end
 
@@ -101,6 +102,7 @@ class OrdersController < ApplicationController
     id = params['id']
     order = Order.find_by(id: id)
     order.state = 3
+    order.locations << CourierLocation.create()
     order.save
     redirect_to "/orders/#{id}"
   end
@@ -118,9 +120,6 @@ class OrdersController < ApplicationController
     order = Order.find_by(id: id)
     order.state = 5
     order.save
-    # if order.save
-    #   # ActionCable.server.remote_connections.where(current_user: User.find(1)).disconnect
-    # end
     redirect_to "/orders/#{id}"
   end
 
