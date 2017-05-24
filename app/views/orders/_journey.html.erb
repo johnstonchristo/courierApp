@@ -1,13 +1,17 @@
 <div id="map"></div>
     <script>
+    var map;
+    var receiverMarker;
+      var order = <%= @order.to_json.html_safe %>;
       function initMap() {
         var receiver = {lat: <%= @order.receiver_location.latitude %>, lng: <%= @order.receiver_location.longitude %>};
         var sender = {lat: <%= @order.sender_location.latitude %>, lng: <%= @order.sender_location.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
+
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
           center: sender
         });
-        var receiverMarker = new google.maps.Marker({
+        receiverMarker = new google.maps.Marker({
           position: receiver,
           map: map
         });

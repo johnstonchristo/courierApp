@@ -1,4 +1,5 @@
-
+var App = App || {};
+var courierMarker;
 
 App.order = App.cable.subscriptions.create({
   channel: "OrderChannel",
@@ -6,40 +7,37 @@ App.order = App.cable.subscriptions.create({
 
 }, {
   connected: function () {
-    // console.log("A new user has joined the channel");
+    if ( order.courier_id === App.currentUser.id ) {
+      console.log("The courier joined the page!");
+      checkLocation();
+    }
+    // If the person who joined the channel is the courier
+      // Set up the watchPosition stuff
+    // console.log( order, App.currentUser );
   },
   disconnected: function () {
 
   },
   received: function ( data ) {
-    // This function will be run by any broadcast in the controllers or the channels
+    if ( data.lat ) {
+      var latitude = data.lat;
+      var longitude = data.long;
 
-
-    // You need to decide whether the data that was received
-      // Was someone entering the page
-        // Log out someone viewed the page
-        if ( data.hasOwnProperty( 'order' ) ) {
-
-          console.log("Someone viewed the page");
-
-        } else {
-
-          console.log("The position is changed");
-
-        }
-
-
-      // Or whether the current position is updating
-        // Log out the position is changed
-
-
-
-// Object {lat: -33.86991690000001, long: 151.2062138}
-// Object {location: Object, order: Object}
-
-
-    console.log( data );
-
+      if ( courierMarker ) {
+        courierMarker.setPosition({
+          lat: latitude,
+          lng: longitude
+        });
+      } else {
+        courierMarker = new google.maps.Marker({
+              position: {
+                lat: latitude,
+                lng: longitude
+              },
+              map: map
+            });
+      }
+    }
   }
 
 });
