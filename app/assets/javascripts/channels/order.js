@@ -7,7 +7,7 @@ App.order = App.cable.subscriptions.create({
 
 }, {
   connected: function () {
-    if ( App.order.courier_id === App.currentUser.id ) {
+    if ( order.courier_id === App.currentUser.id ) {
       console.log("The courier joined the page!");
       checkLocation();
     }
