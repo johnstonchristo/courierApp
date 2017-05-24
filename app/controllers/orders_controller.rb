@@ -10,6 +10,13 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    id = params['id']
+    order = Order.find_by(id: id)
+    if (order.state == "on_journey")
+      ActionCable.server.broadcast "order_channel_#{id}",
+          location: order.sender_location,
+          order: order
+    end
   end
 
   # GET /orders/new
@@ -32,7 +39,6 @@ class OrdersController < ApplicationController
     @order.locations << ReceiverLocation.create(full_street_address: params['receiver_location'])
     respond_to do |format|
       if @order.save
-
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -96,6 +102,7 @@ class OrdersController < ApplicationController
     id = params['id']
     order = Order.find_by(id: id)
     order.state = 3
+    order.locations << CourierLocation.create()
     order.save
     redirect_to "/orders/#{id}"
   end
