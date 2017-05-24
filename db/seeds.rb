@@ -59,7 +59,6 @@ order_1 = Order.create({
   item_height: 10,
   item_depth: 15,
   sender_id: user_1.id,
-  receiver_id: user_2.id,
   state: 0,
   })
 
@@ -226,6 +225,16 @@ puts "Order Count #{Order.all.count}"
 
 
 Location.destroy_all
+
+location_1 = SenderLocation.create(
+full_street_address: "55 York Street Sydney Australia",
+order_id: order_1.id
+)
+
+location_2 = ReceiverLocation.create(
+full_street_address: "1 August Road Manly Australia",
+order_id: order_1.id
+)
 
 location_1 = SenderLocation.create(
 full_street_address: "55 York Street Sydney Australia",
