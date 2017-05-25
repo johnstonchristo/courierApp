@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
 
+<div class="col s6">
+  <h4>Hi <%= @user.first_name %>!</h4>
+  <h5>My details:</h5>
+</div>
+
+<div class="col s6">
+  <a href="/orders/new"class="waves-effect waves-light btn right red">NEW ORDER</a>
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col s6">
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -20,16 +35,20 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+</div>
 
+<div class="col s6">
 <% if @user.link %>
     <div class="col s6">
-      <td><%= image_tag @user.link, id:"profile"%></td>
+      <td><%= image_tag @user.link, id:"profile" %></td>
     </div>
   <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
+</div>
+
+</div>
+
+</div>
