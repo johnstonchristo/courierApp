@@ -1,43 +1,41 @@
-<h1 align = "center">courierApp</h1>
+<div class="hero">
+    <div class="container">
+    <h1 align = "center">Snail</h1>
 
 
-<% if flash[:login_error] %>
-<p>
-  <%= flash[:login_error] %>
-</p>
-<% end %>
+    <% if flash[:login_error] %>
+    <p>
+      <%= flash[:login_error] %>
+    </p>
+    <% end %>
 
-<%= form_tag "/login" do %>
-
-
-<div class ="container">
-<div clas ="row">
-<div class="col s3">
-  <div class="card-panel white">
-  <p>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
-  </p>
-
-  <p>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </p>
+    <%= form_tag "/login" do %>
 
 
-<button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
-<% end %>
+    <div class ="container">
 
-<!-- <div class="row">
-  <div class="col s3"> -->
-  <p>Not a member yet? Sign up here! </p>
+    <div class="col s3">
+      <div class="card-panel white z-depth-5">
+      <p>
+        <%= label_tag :username %>
+        <%= text_field_tag :username %>
+      </p>
 
+      <p>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </p>
+
+
+    <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
+    <% end %>
+
+      <p>Not a member yet? Sign up here! </p>
 
     <a class="waves-effect waves-light btn blue" href="/users/new">Sign Up</a>
-  <!-- </div> -->
-<!-- </div> -->
-</div>
-</div>
-</div>
-</div>
+
+    </div>
+    </div>
+    </div>
+    </div>
 </div>

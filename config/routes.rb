@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/home'
+
   resources :locations
   get '/login' => 'session#new'
   post '/login' => 'session#create'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   get '/orders/:id/order_received' => 'orders#receiver_confirmed_delivery'
 
 
-  root "users#index"
+  root "pages#home"
 
   resources :users, :orders
 
