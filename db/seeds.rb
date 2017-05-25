@@ -24,7 +24,7 @@ user_3 = User.create({
   email: "john.smith@test.com",
   password: "test",
   password_confirmation: "test",
-  username: "monicaaaa"
+  username: "johnsmith"
   })
 
   #
