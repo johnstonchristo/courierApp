@@ -8,30 +8,42 @@
       App.currentUser = <%= @current_user.to_json.html_safe %>;
     </script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link
+
   </head>
 
   <body>
 
-      <nav>
-      <div class="nav-wrapper light-blue lighten-2">
-        <a href="#" class="brand-logo">Courier App</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <nav>
+      <div class="nav-wrapper orange darken-4">
+        <a href="/" class="brand-logo">Courier App</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
           <% if @current_user %>
           <li><%= link_to "My Profile", user_path(@current_user) %></li>
           <li><a href="/orders/pending_orders">My Pending Orders</a></li>
           <li><a href="/orders/potential_deliveries">Potential Deliveries</a></li>
           <li><a href="/logout">Logout</a></li>
+          <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up!</a></li>
           <% end %>
-          <li><a href="/orders">Orders</a></li>
-          <li><a href="/users">Users</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <% if @current_user %>
+          <li><%= link_to "My Profile", user_path(@current_user) %></li>
+          <li><a href="/orders/pending_orders">My Pending Orders</a></li>
+          <li><a href="/orders/potential_deliveries">Potential Deliveries</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <% else %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Sign Up!</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
 
-    <div class="container">
       <%= yield %>
-    </div>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
