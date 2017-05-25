@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170523010912) do
     t.string   "item_description"
     t.integer  "item_weight"
     t.integer  "item_height"
+    t.integer  "item_width"
     t.integer  "item_depth"
     t.integer  "sender_id"
     t.integer  "receiver_id"
