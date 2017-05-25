@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   def show
     id = params["id"]
     @user = User.find_by(id: id)
-    @orders = Order.where(sender_id: @current_user.id)
+    @send_orders = Order.where(sender_id: @current_user.id)
+    @receive_orders = Order.where(receiver_id: @current_user.id)
   end
 
   # GET /users/new

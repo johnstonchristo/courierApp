@@ -48,12 +48,21 @@
 </div>
 </div>
 <hr>
-<h5>My Active Orders:</h5>
-<% @orders.each do |order| %>
+<h5>My Outbound Orders:</h5>
+<% @send_orders.each do |order| %>
   <p>
     <a>
       <%= link_to(order.item_description, "/orders/#{order.id}")%>
     </a>
   </p>
   <% end %>
+  <hr>
+  <h5>My Inbound Orders:</h5>
+  <% @receive_orders.each do |order| %>
+    <p>
+      <a>
+        <%= link_to(order.item_description, "/orders/#{order.id}")%>
+      </a>
+    </p>
+    <% end %>
 </div>
