@@ -8,7 +8,6 @@
       App.currentUser = <%= @current_user.to_json.html_safe %>;
     </script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   </head>
 
@@ -18,7 +17,7 @@
 
     <nav>
       <div class="nav-wrapper orange darken-4">
-        <a href="/" class="brand-logo">Courier App</a>
+        <a href="/" class="brand-logo">snail.</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><%= link_to "My Profile", user_path(@current_user) %></li>
@@ -38,6 +37,7 @@
 <% end %>
 
       <%= yield %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

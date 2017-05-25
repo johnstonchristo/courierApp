@@ -11,13 +11,17 @@
           zoom: 11,
           center: sender
         });
-        receiverMarker = new google.maps.Marker({
+
+        var receiverMarker = new google.maps.Marker({
           position: receiver,
-          map: map
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
         });
         var senderMarker = new google.maps.Marker({
           position: sender,
-          map: map
+          map: map,
+          icon:
+          'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
         });
       }
     </script>

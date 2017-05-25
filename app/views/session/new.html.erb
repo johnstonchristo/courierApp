@@ -1,41 +1,42 @@
 <div class="hero">
-    <div class="container">
-    <h1 align = "center">Snail</h1>
 
 
-    <% if flash[:login_error] %>
-    <p>
-      <%= flash[:login_error] %>
-    </p>
-    <% end %>
+        <h1 align="center">snail.</h1>
+        <h6 align="center">packag</h6>
 
-    <%= form_tag "/login" do %>
+        <% if flash[:login_error] %>
+        <p>
+            <%= flash[:login_error] %>
+        </p>
+        <% end %>
 
-
-    <div class ="container">
-
-    <div class="col s3">
-      <div class="card-panel white z-depth-5">
-      <p>
-        <%= label_tag :username %>
-        <%= text_field_tag :username %>
-      </p>
-
-      <p>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
-      </p>
+<div class="container">
 
 
-    <button class="btn waves-effect waves-light red" type="submit" name="action">Login</button>
-    <% end %>
+        <%= form_tag "/login" do %>
 
-      <p>Not a member yet? Sign up here! </p>
+        <div class="container">
 
-    <a class="waves-effect waves-light btn blue" href="/users/new">Sign Up</a>
+            <div class="col s3">
+                <div class="card-panel white z-depth-5">
+                    <p>
+                        <%= label_tag :username %>
+                        <%= text_field_tag :username %>
+                    </p>
 
+                    <p>
+                        <%= label_tag :password %>
+                        <%= password_field_tag :password %>
+                    </p>
+
+                    <button class="btn waves-effect waves-light #ffeb3b yellow lighten-" type="submit" name="action">Login</button>
+                    <% end %>
+
+                    <a class="login waves-effect waves-light btn blue" href="/users/new">Sign Up</a>
+
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </div>
+
 </div>

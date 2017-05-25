@@ -102,7 +102,6 @@ class OrdersController < ApplicationController
     id = params['id']
     order = Order.find_by(id: id)
     order.state = 3
-    order.locations << CourierLocation.create()
     order.save
     redirect_to "/orders/#{id}"
   end

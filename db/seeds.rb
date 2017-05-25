@@ -53,6 +53,7 @@ puts "User Count: #{User.all.count}"
 
 Order.destroy_all
 
+
 # order_1 = Order.create({
 #   item_description: "Important files",
 #   item_weight: 5,
@@ -222,10 +223,21 @@ Order.destroy_all
 #
 
 
+
 puts "Order Count #{Order.all.count}"
 
 
 Location.destroy_all
+
+# location_1 = SenderLocation.create(
+# full_street_address: "55 York Street Sydney Australia",
+# order_id: order_1.id
+# )
+#
+# location_2 = ReceiverLocation.create(
+# full_street_address: "1 August Road Manly Australia",
+# order_id: order_1.id
+# )
 
 # location_1 = SenderLocation.create(
 # full_street_address: "55 York Street Sydney Australia",

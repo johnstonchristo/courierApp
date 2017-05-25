@@ -1,3 +1,105 @@
+
+<body>
+    <div align="center" class="container">
+
+        <p id="notice"><%= notice %></p>
+
+        <h4>Hi
+            <%= @user.first_name %>!</h4>
+        <h5>My details:</h5>
+
+        <a href="/orders/new" class="waves-effect waves-light btn right red">NEW ORDER</a>
+
+        <p>
+            <strong>Username:</strong>
+            <%= @user.username %>
+        </p>
+
+        <p>
+            <strong>First name:</strong>
+            <%= @user.first_name %>
+        </p>
+
+        <p>
+            <strong>Last name:</strong>
+            <%= @user.last_name %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= @user.email %>
+        </p>
+
+        <%= link_to 'Edit', edit_user_path(@user) %>
+
+        <% if @user.link %>
+        <td><%= image_tag @user.link, id:"profile" %></td>
+
+        <% end %>
+<h4>My Outbound Orders</h4>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Sent to username</th>
+                    <th>Sent to address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @send_orders.each do |order| %>
+                <tr>
+                    <td>
+                        <a>
+                            <%= link_to(order.item_description, "/orders/#{order.id}")%>
+                        </a>
+                    </td>
+                            <td>
+                                <a>
+                                    <%= link_to(order.receiver_id, "/orders/#{order.id}")%>
+                                </a>
+                            </td>
+                            <% end %>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h5>My Inbound Orders:</h5>
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Sent from username</th>
+                            <th>Sent from address</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                <% @receive_orders.each do |order| %>
+                <tr>
+                    <td>
+                        <a>
+                        <%= link_to(order.item_description, "/orders/#{order.id}")%>
+                    </td>
+
+                    <td>
+                        
+                    </td>
+
+                    <td>
+                        <%= link_to("Decline", "/orders/#{order.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red right") %>
+
+                        <%= link_to("Accept", "/orders/#{order.id}/accept_pending_order", method: :get, data: {confirm: "Are you sure you want to accept this order?"}, class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+                        </td>
+                    </a>
+                </td>
+
+            </tr>
+                <% end %>
+
+            </div>
+        </body>
+
 <p id="notice"><%= notice %></p>
 <div class="container">
 <div class="row">
