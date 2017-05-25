@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 <body>
     <div  class="container">
 
         <p id="notice"><%= notice %></p>
 
 <div class= "row">
-
+<div class="card-panel white z-depth-5">
 
         <h4>Hi
             <%= @user.first_name %>!
@@ -19,31 +19,29 @@
         <td><%= image_tag @user.link, id:"profile" %></td>
 </div>
 
-        <p>
+        <p class="usershow">
             <strong>Username:</strong>
             <%= @user.username %>
         </p>
 
-        <p>
+        <p class="usershow">
             <strong>First name:</strong>
             <%= @user.first_name %>
-        </p>
+        </p class="usershow">
 
-        <p>
+        <p class="usershow">
             <strong>Last name:</strong>
             <%= @user.last_name %>
         </p>
 
-        <p>
+        <p class="usershow">
             <strong>Email:</strong>
             <%= @user.email %>
         </p>
-
         <%= link_to 'Edit', edit_user_path(@user) %>
-
-
-
         <% end %>
+</div>
+<div class="card-panel white z-depth-5">
 <h4>My Outbound Orders</h4>
         <table class="highlight">
             <thead>
@@ -105,80 +103,6 @@
             </tr>
                 <% end %>
 </div>
+</div>
             </div>
         </body>
-=======
-<p id="notice"><%= notice %></p>
-<div class="container">
-<div class="row">
-
-<div class="col s6">
-  <h4>Hi <%= @user.first_name %>!</h4>
-  <h5>My details:</h5>
-</div>
-
-<div class="col s6">
-  <a href="/orders/new"class="waves-effect waves-light btn right red">NEW ORDER</a>
-</div>
-
-</div>
-
-<div class="row">
-  <div class="col s6">
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %>
-</div>
-
-<div class="col s6">
-<% if @user.link %>
-    <div class="col s6">
-      <td><%= image_tag @user.link, id:"profile" %></td>
-    </div>
-  <% end %>
-
-</div>
-</div>
-<hr>
-<h5>My Outbound Orders:</h5>
-<% @send_orders.each do |order| %>
-  <p>
-    <a>
-      <%= link_to(order.item_description, "/orders/#{order.id}")%>
-    </a>
-  </p>
-  <% end %>
-  <hr>
-  <h5>My Inbound Orders:</h5>
-  <% @receive_orders.each do |order| %>
-    <p>
-      <a>
-        <%= link_to(order.item_description, "/orders/#{order.id}")%>
-    <% if order.state == "created" %>
-        <%= link_to("Decline", "/orders/#{order.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red right") %>
-
-        <%= link_to("Accept", "/orders/#{order.id}/accept_pending_order", method: :get, data: {confirm: "Are you sure you want to accept this order?"}, class: "waves-effect waves-light btn light-blue lighten-2 right") %>
-  <% end %>
-      </a>
-    </p>
-    <% end %>
-</div>
->>>>>>> ff3e70697880a660cbd72eaddd4db1afd4105d83
