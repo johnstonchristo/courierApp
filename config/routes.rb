@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/orders/:id/order_received' => 'orders#receiver_confirmed_delivery'
 
 
+
   root "session#new"
 
   resources :users, :orders
