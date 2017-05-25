@@ -1,3 +1,9 @@
+<body>
+<div class="container">
+<div class="row">
+<div class="card-panel white z-depth-5">
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -52,24 +58,30 @@
 <hr>
 <% end %>
 
+</div>
 
+<div class="card-panel white z-depth-5">
 <% if (@order.state == "on_journey") %>
   <%= render 'journey', order: @order %>
 <% end %>
-
+</div>
 <% if (@current_user.id == @order.courier_id && @order.state == "on_journey") %>
-<hr>
-  <p>Courier: <%= link_to("Order Delivered!", "/orders/#{@order.id}/order_delivered",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+
+  <p><%= link_to("Order Delivered!", "/orders/#{@order.id}/order_delivered",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
 </li></p>
-<hr>
+
 <% end %>
 
 <% if (@current_user.id == @order.receiver_id && @order.state == "delivered") %>
-<hr>
+
   <p>Receiver: <%= link_to("Confirm Order Received!", "/orders/#{@order.id}/order_received",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
 </li></p>
-<hr>
+
 <% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+</div>
+</div>
+</body>
