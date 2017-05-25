@@ -1,13 +1,22 @@
 <body>
-    <div align="center" class="container">
+    <div  class="container">
 
         <p id="notice"><%= notice %></p>
 
+<div class= "row">
+
+
         <h4>Hi
-            <%= @user.first_name %>!</h4>
-        <h5>My details:</h5>
+            <%= @user.first_name %>!
+        </h4>
+
+
 
         <a href="/orders/new" class="waves-effect waves-light btn right red">NEW ORDER</a>
+ <div class="col s4">
+        <% if @user.link %>
+        <td><%= image_tag @user.link, id:"profile" %></td>
+</div>
 
         <p>
             <strong>Username:</strong>
@@ -31,8 +40,7 @@
 
         <%= link_to 'Edit', edit_user_path(@user) %>
 
-        <% if @user.link %>
-        <td><%= image_tag @user.link, id:"profile" %></td>
+
 
         <% end %>
 <h4>My Outbound Orders</h4>
@@ -82,7 +90,7 @@
                     </td>
 
                     <td>
-                        
+
                     </td>
 
                     <td>
@@ -95,6 +103,6 @@
 
             </tr>
                 <% end %>
-
+</div>
             </div>
         </body>
