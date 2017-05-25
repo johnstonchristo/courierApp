@@ -2,6 +2,33 @@
   Jobs Near ME!
 </h3>
 
+
+
+  <div id="map">
+      <script>
+      var map;
+        var order = <%= @order.to_json.html_safe %>;
+        function initMap() {
+          var sender = {lat: <%= 30 %>, lng: <%= 100 %>};
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: sender
+          });
+
+          var senderMarker = new google.maps.Marker({
+            position: sender,
+            map: map,
+            icon:
+            'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+          });
+        }
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu_ETj5PiWbIw024SM2ZrJK1va1PtKsn0&callback=initMap">
+      </script>
+      </div>
+
 <ul>
   <% @orders.each do |order| %>
   <div class="row">

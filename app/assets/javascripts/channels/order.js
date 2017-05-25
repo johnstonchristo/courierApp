@@ -34,7 +34,8 @@ App.order = App.cable.subscriptions.create({
                 lat: latitude,
                 lng: longitude
               },
-              map: map
+              map: map,
+              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
       }
     }
