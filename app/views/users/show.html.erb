@@ -35,8 +35,7 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
 </div>
 
 <div class="col s6">
@@ -48,7 +47,13 @@
 
 </div>
 </div>
-
-</div>
-
+<hr>
+<h5>My Active Orders:</h5>
+<% @orders.each do |order| %>
+  <p>
+    <a>
+      <%= link_to(order.item_description, "/orders/#{order.id}")%>
+    </a>
+  </p>
+  <% end %>
 </div>

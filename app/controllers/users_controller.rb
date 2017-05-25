@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     id = params["id"]
     @user = User.find_by(id: id)
+    @orders = Order.where(sender_id: @current_user.id)
   end
 
   # GET /users/new
