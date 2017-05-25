@@ -17,16 +17,14 @@
 
 @import "materialize";
 
-body.session.new {
-  background-color: blue;
-}
 
-.hero {
-   background: image-url('cityBackdrop.jpg');
+body.session.new, body.users.new {
+   background-image: image-url('cityBackdrop.jpg');
    background-size: cover;
-   height: 55vh;
 }
 
-#login {
-   background-color: rgba(255,255,255,.8);
-}
+a.login { margin-left: 200px;}
+
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
