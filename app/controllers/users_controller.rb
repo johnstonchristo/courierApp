@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: id)
     @send_orders = Order.where(sender_id: @current_user.id)
     @receive_orders = Order.where(receiver_id: @current_user.id)
+    @courier_orders = Order.where(courier_id: @current_user.id)
   end
 
   # GET /users/new
