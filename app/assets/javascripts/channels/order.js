@@ -39,7 +39,7 @@ App.order = App.cable.subscriptions.create({
                 lng: longitude
               },
               map: map,
-              icon: 'https://d30y9cdsu7xlg0.cloudfront.net/png/536-200.png'
+              icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
         map.setCenter({
           lat: latitude,
