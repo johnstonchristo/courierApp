@@ -114,16 +114,18 @@
             </tr>
           </thead>
           <tbody>
-            <% @receive_orders.each do |order| %>
+            <% @courier_orders.each do |order| %>
             <tr>
               <td>
                 <a>
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
                 </td>
                 <td>
-                  <%= User.find_by(id: order.sender_id).username %>
+                  <%= order.sender_location.full_street_address %>
                 </td>
-
+                    <td>
+                  <%= order.receiver_location.full_street_address %>
+                </td>
                 <% end %>
             </tr>
             </tbody>
