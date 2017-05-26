@@ -54,19 +54,14 @@
             <% @send_orders.each do |order| %>
             <tr>
               <td>
-
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
-
               </td>
               <td>
-
                   <%= User.find_by(id: order.receiver_id).username %>
-
               </td>
               <td>
 
                   <%= order.receiver_location.full_street_address %>
-                <
               </td>
               <td>
 

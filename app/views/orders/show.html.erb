@@ -4,110 +4,45 @@
             <div class="card-panel white z-depth-5">
 
                 <p id="notice"><%= notice %></p>
-
-                <table class="highlight">
+                <table>
                     <thead>
                         <tr>
                             <th>Item Description</th>
-                            <th>Item weight</th>
-                            <th>Item height</th>
-                            <th>Item depth</th>
-                            <th>Receiver</th>
                             <th>Courier</th>
+                            <th>Pickup Location</th>
+                            <th>Delivery Location</th>
+                            <th>Receiver</th>
                             <th>Status</th>
+
 
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr>
                             <td>
-
                                 <%= @order.item_description %>
-
                             </td>
-
-                            <td>
-
-                                <%= @order.item_weight %>
-
-                            </td>
-
-                            <td>
-
-                                <%= @order.item_height %>
-
-                            </td>
-
-                            <td>
-
-                                <%= @order.item_depth %>
-
-                            </td>
-
-                            <td>
-                                <% if @order.receiver_id  %>
-                                <%= @order.receiver.username %>
-                                <% end  %>
-
-                            </td>
-
                             <td>
                                 <% if @order.courier_id  %>
                                 <%= @order.courier.username %>
                                 <% end  %>
-
+                            </td>
+                            <td>
+                            <%= @order.sender_location.full_street_address %>
+                            </td>
+                            <td>
+                            <%= @order.receiver_location.full_street_address %>
+                            </td>
+                            <td>
+                                <% if @order.receiver_id  %>
+                                <%= @order.receiver.username %>
+                                <% end  %>
                             </td>
                                 <td>
                                         <%= @order.state %>
                                     </td>
                                         </tr>
                                     </tbody>
-
-                                    <!-- <p>
-                                        <strong>Item description:</strong>
-                                        <%= @order.item_description %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Item weight:</strong>
-                                        <%= @order.item_weight %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Item height:</strong>
-                                        <%= @order.item_height %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Item depth:</strong>
-                                        <%= @order.item_depth %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Sender:</strong>
-                                        <%= @order.sender.username %>
-
-                                    </p>
-
-                                    <p>
-                                        <strong>Receiver:</strong>
-                                        <% if @order.receiver_id  %>
-                                        <%= @order.receiver.username %>
-                                        <% end  %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Courier:</strong>
-                                        <% if @order.courier_id  %>
-                                        <%= @order.courier.username %>
-                                        <% end  %>
-                                    </p>
-
-                                    <p>
-                                        <strong>Order Status:</strong>
-                                        <%= @order.state %>
-                                    </p> -->
 
                                     <% if (@current_user.id == @order.courier_id && @order.state == "courier_accepted") %>
                                     <hr>
