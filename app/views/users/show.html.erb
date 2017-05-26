@@ -83,35 +83,34 @@
             <tr>
               <th>Item</th>
               <th>Sender</th>
-              <th>Sent from</th>
               <th>Order Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @receive_orders.each do |order| %>
             <tr>
               <td>
-
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
                 </td>
                 <td>
                   <%= User.find_by(id: order.sender_id).username %>
                 </td>
                 <td>
-                  <%= order.sender_location.full_street_address %>
+                  <%= order.state %>
+
+                </td>
+
+                <td>
                   <% if order.state == "created" %>
+
                   <%= link_to("Decline", "/orders/#{order.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "waves-effect waves-light btn red right") %>
 
                   <%= link_to("Accept", "/orders/#{order.id}/accept_pending_order", method: :get, data: {confirm: "Are you sure you want to accept this order?"}, class: "waves-effect waves-light btn light-blue lighten-2 right") %>
-                  <% end %>
-                </td>
+                    <% end %>
+      </td>
 
-            </td>
-            <td>
 
-                <%= order.state %>
-
-            </td>
               <% end %>
           </tr>
         </tbody>
