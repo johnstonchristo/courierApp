@@ -47,25 +47,31 @@
               <th>Item</th>
               <th>Receiver</th>
               <th>Sent to</th>
+              <th>Order Status</th>
             </tr>
           </thead>
           <tbody>
             <% @send_orders.each do |order| %>
             <tr>
               <td>
-                <a>
+
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
-                </a>
+
               </td>
               <td>
-                <a>
+
                   <%= User.find_by(id: order.receiver_id).username %>
-                </a>
+
               </td>
               <td>
-                <a>
+
                   <%= order.receiver_location.full_street_address %>
-                </a>
+                <
+              </td>
+              <td>
+
+                  <%= order.state %>
+
               </td>
               <% end %>
             </tr>
@@ -78,13 +84,14 @@
               <th>Item</th>
               <th>Sender</th>
               <th>Sent from</th>
+              <th>Order Status</th>
             </tr>
           </thead>
           <tbody>
             <% @receive_orders.each do |order| %>
             <tr>
               <td>
-                <a>
+
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
                 </td>
                 <td>
@@ -98,7 +105,12 @@
                   <%= link_to("Accept", "/orders/#{order.id}/accept_pending_order", method: :get, data: {confirm: "Are you sure you want to accept this order?"}, class: "waves-effect waves-light btn light-blue lighten-2 right") %>
                   <% end %>
                 </td>
-              </a>
+
+            </td>
+            <td>
+
+                <%= order.state %>
+
             </td>
               <% end %>
           </tr>
@@ -111,13 +123,13 @@
               <th>Item</th>
               <th>Pickup Location</th>
               <th>Delivery Location</th>
+              <th>Order Status</th>
             </tr>
           </thead>
           <tbody>
             <% @courier_orders.each do |order| %>
             <tr>
               <td>
-                <a>
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
                 </td>
                 <td>
@@ -125,6 +137,9 @@
                 </td>
                     <td>
                   <%= order.receiver_location.full_street_address %>
+                </td>
+                <td>
+                    <%= order.state %>
                 </td>
                 <% end %>
             </tr>
