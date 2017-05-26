@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  before_action :check_if_logged_out, only: []
+
+  before_action :check_if_logged_in, only: [:index, :show, :edit, :update]
+
   # GET /orders
   # GET /orders.json
   def index
@@ -131,5 +135,18 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:item_description, :item_weight, :item_height, :item_depth, :sender_id, :receiver_id, :courier_id)
+    end
+    def check_if_logged_out
+      if @current_user
+        flash[:error] = "You are already logged in"
+        redirect_to "/users"
+      end
+    end
+
+    def check_if_logged_in
+      unless @current_user
+        flash[:error] = "You need to be logged in for that"
+        redirect_to "/login"
+      end
     end
 end
