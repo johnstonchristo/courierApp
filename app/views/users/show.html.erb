@@ -113,8 +113,23 @@
               <th>Delivery Location</th>
             </tr>
           </thead>
-
-
+          <tbody>
+            <% @receive_orders.each do |order| %>
+            <tr>
+              <td>
+                <a>
+                  <%= link_to(order.item_description, "/orders/#{order.id}")%>
+                </td>
+                <td>
+                  <%= User.find_by(id: order.sender_id).username %>
+                </td>
+                <td>
+                  <%= User.find_by(id: order.sender_id).username %>
+                </td>
+                <% end %>
+            </tr>
+            </tbody>
+            </table>
         </div>
       </div>
     </div>
