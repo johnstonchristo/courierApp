@@ -1,26 +1,21 @@
 
   <div class="container">
 
-    <p id="notice"><%= notice %></p>
-    <div class="row">
-      <div class="card-panel white z-depth-5">
-        <h4>Hi
-          <%= @user.first_name %>!
-        </h4>
-
 
     <p id="notice"><%= notice %></p>
 
     <div class="row">
       <div class="card-panel white z-depth-5">
 
-        <h4>Hi
-          <%= @user.first_name %>!
+
+        <h4>
+          <%= @user.first_name %>'s Dashboard
         </h4>
 
 
-        <a href="/orders/new" class="waves-effect waves-light btn right red">NEW ORDER</a>
-        <div class="col s4">
+        <a href="/orders/new" class="waves-effect waves-light btn right #42a5f5 blue lighten-1">NEW ORDER</a>
+
+        <div class=" profileimage col s4">
           <% if @user.link %>
           <td><%= image_tag @user.link, id:"profile" %></td>
         </div>
@@ -32,7 +27,7 @@
         <p class="usershow">
           <strong>First name:</strong>
           <%= @user.first_name %>
-        </p class="usershow">
+        </p>
         <p class="usershow">
           <strong>Last name:</strong>
           <%= @user.last_name %>
@@ -45,13 +40,13 @@
         <% end %>
       </div>
       <div class="card-panel white z-depth-5">
-        <h4>My Outbound Orders</h4>
+        <h5>outbound orders</h5>
         <table class="highlight">
           <thead>
             <tr>
               <th>Item</th>
-              <th>Sent to username</th>
-              <th>Sent to address</th>
+              <th>Receiver</th>
+              <th>Sent to</th>
             </tr>
           </thead>
           <tbody>
@@ -73,21 +68,19 @@
                 </a>
               </td>
               <% end %>
-
             </tr>
           </tbody>
         </table>
         <hr>
-        <h5>My Inbound Orders:</h5>
+        <h5>inbound orders</h5>
         <table class="highlight">
           <thead>
             <tr>
               <th>Item</th>
-              <th>Sent from username</th>
-              <th>Sent from address</th>
+              <th>Sender</th>
+              <th>Sent from</th>
             </tr>
           </thead>
-
           <tbody>
             <% @receive_orders.each do |order| %>
             <tr>
@@ -95,16 +88,9 @@
                 <a>
                   <%= link_to(order.item_description, "/orders/#{order.id}")%>
                 </td>
-
                 <td>
                   <%= User.find_by(id: order.sender_id).username %>
                 </td>
-
-
-                <td>
-                  <%= User.find_by(id: order.sender_id).username %>
-                </td>
-
                 <td>
                   <%= order.sender_location.full_street_address %>
                   <% if order.state == "created" %>

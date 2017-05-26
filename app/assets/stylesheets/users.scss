@@ -10,3 +10,13 @@
 
 
 }
+.profileimage {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
+body.users.show {
+  background: image-url('map.jpg');
+  background-size: cover;
+}
