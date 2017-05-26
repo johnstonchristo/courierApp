@@ -37,6 +37,10 @@ App.order = App.cable.subscriptions.create({
               map: map
               // icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
+        map.setCenter({
+          lat: latitude,
+          lng: longitude
+        });
       }
     }
   }
