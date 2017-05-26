@@ -1,75 +1,151 @@
-<p id="notice"><%= notice %></p>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card-panel white z-depth-5">
 
-<p>
-  <strong>Item description:</strong>
-  <%= @order.item_description %>
-</p>
+                <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Item weight:</strong>
-  <%= @order.item_weight %>
-</p>
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th>Item Description</th>
+                            <th>Item weight</th>
+                            <th>Item height</th>
+                            <th>Item depth</th>
+                            <th>Receiver</th>
+                            <th>Courier</th>
+                            <th>Status</th>
 
-<p>
-  <strong>Item height:</strong>
-  <%= @order.item_height %>
-</p>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<p>
-  <strong>Item depth:</strong>
-  <%= @order.item_depth %>
-</p>
+                        <tr>
+                            <td>
 
-<p>
-  <strong>Sender:</strong>
-    <%= @order.sender.username %>
+                                <%= @order.item_description %>
 
-</p>
+                            </td>
 
-<p>
-  <strong>Receiver:</strong>
-  <% if @order.receiver_id  %>
-    <%= @order.receiver.username %>
-  <% end  %>
-</p>
+                            <td>
 
-<p>
-  <strong>Courier:</strong>
-  <% if @order.courier_id  %>
-    <%= @order.courier.username %>
-  <% end  %>
-</p>
+                                <%= @order.item_weight %>
 
-<p>
-  <strong>Order Status:</strong>
-  <%= @order.state %>
-</p>
+                            </td>
 
-<% if (@current_user.id == @order.courier_id && @order.state == "courier_accepted") %>
-<hr>
-  <p><%= link_to("Picked Up!", "/orders/#{@order.id}/delivery_on_journey",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
-</li></p>
-<hr>
-<% end %>
+                            <td>
+
+                                <%= @order.item_height %>
+
+                            </td>
+
+                            <td>
+
+                                <%= @order.item_depth %>
+
+                            </td>
+
+                            <td>
+                                <% if @order.receiver_id  %>
+                                <%= @order.receiver.username %>
+                                <% end  %>
+
+                            </td>
+
+                            <td>
+                                <% if @order.courier_id  %>
+                                <%= @order.courier.username %>
+                                <% end  %>
+
+                            </td>
+                                <td>
+                                        <%= @order.state %>
+                                    </td>
+                                        </tr>
+                                    </tbody>
+
+                                    <!-- <p>
+                                        <strong>Item description:</strong>
+                                        <%= @order.item_description %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Item weight:</strong>
+                                        <%= @order.item_weight %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Item height:</strong>
+                                        <%= @order.item_height %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Item depth:</strong>
+                                        <%= @order.item_depth %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Sender:</strong>
+                                        <%= @order.sender.username %>
+
+                                    </p>
+
+                                    <p>
+                                        <strong>Receiver:</strong>
+                                        <% if @order.receiver_id  %>
+                                        <%= @order.receiver.username %>
+                                        <% end  %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Courier:</strong>
+                                        <% if @order.courier_id  %>
+                                        <%= @order.courier.username %>
+                                        <% end  %>
+                                    </p>
+
+                                    <p>
+                                        <strong>Order Status:</strong>
+                                        <%= @order.state %>
+                                    </p> -->
+
+                                    <% if (@current_user.id == @order.courier_id && @order.state == "courier_accepted") %>
+                                    <hr>
+                                    <p><%= link_to("Picked Up!", "/orders/#{@order.id}/delivery_on_journey",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+                                    </li>
+                                </p>
+                                <hr>
+                                <% end %>
+
+                            </div>
 
 
-<% if (@order.state == "on_journey") %>
-  <%= render 'journey', order: @order %>
-<% end %>
+                                <% if (@order.state == "on_journey") %>
+                                <%= render 'journey', order: @order %>
+                                <% end %>
+                            </div>
+                            <% if (@current_user.id == @order.courier_id && @order.state == "on_journey") %>
 
-<% if (@current_user.id == @order.courier_id && @order.state == "on_journey") %>
-<hr>
-  <p>Courier: <%= link_to("Order Delivered!", "/orders/#{@order.id}/order_delivered",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
-</li></p>
-<hr>
-<% end %>
+                            <p><%= link_to("Order Delivered!", "/orders/#{@order.id}/order_delivered",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+                            </li>
+                        </p>
 
-<% if (@current_user.id == @order.receiver_id && @order.state == "delivered") %>
-<hr>
-  <p>Receiver: <%= link_to("Confirm Order Received!", "/orders/#{@order.id}/order_received",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
-</li></p>
-<hr>
-<% end %>
+                        <% end %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+                        <% if (@current_user.id == @order.receiver_id && @order.state == "delivered") %>
+
+
+                            <p><%= link_to("Confirm Order Received!", "/orders/#{@order.id}/order_received",  class: "waves-effect waves-light btn light-blue lighten-2 right") %>
+                        </li>
+                    </p>
+
+                    <% end %>
+
+                    <%= link_to 'Edit', edit_order_path(@order) %>
+                    |
+                    <%= link_to 'Back', orders_path %>
+
+
+            </div>
+
+        </body>
