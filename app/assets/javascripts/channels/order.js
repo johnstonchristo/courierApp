@@ -28,6 +28,10 @@ App.order = App.cable.subscriptions.create({
           lat: latitude,
           lng: longitude
         });
+        map.setCenter({
+          lat: latitude,
+          lng: longitude
+        });
       } else {
         courierMarker = new google.maps.Marker({
               position: {
@@ -35,8 +39,12 @@ App.order = App.cable.subscriptions.create({
                 lng: longitude
               },
               map: map,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+              icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
+        map.setCenter({
+          lat: latitude,
+          lng: longitude
+        });
       }
     }
   }
