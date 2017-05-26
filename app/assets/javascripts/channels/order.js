@@ -32,6 +32,8 @@ App.order = App.cable.subscriptions.create({
           lat: latitude,
           lng: longitude
         });
+        map.setZoom(15);
+
       } else {
         courierMarker = new google.maps.Marker({
               position: {
@@ -45,6 +47,7 @@ App.order = App.cable.subscriptions.create({
           lat: latitude,
           lng: longitude
         });
+        map.setZoom(15);
       }
     }
   }
